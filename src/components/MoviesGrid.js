@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import MovieCard from "@/components/MovieCard"
 
 const MoviesGrid = () => {
   const [data, setData] = useState([]);
@@ -27,17 +28,17 @@ const MoviesGrid = () => {
     getData();
   }, []);
 
-  return (<div>
-    {loading && <p>Cargando...</p>}
-    {error && <p>Hubo un error al cargar los datos.</p>}
-    {!loading && !error && (
-      <ul>
-        {data.map((movie) => (
-          <li key={movie.id}>{movie.title}</li>
+  return (
+   <div className="grid grid-cols-7 grid-rows-3 gap-12">
+      {!loading &&
+        data.map(({ id, title, poster_path }) => (
+          <MovieCard key={id} id={id} title={title} image = {poster_path}/>
         ))}
-      </ul>
-    )}
-  </div>);
+
+      {loading && "Loading..."}
+
+      {error && "HUBO UN ERROR"}
+    </div>);
 };
 
 export default MoviesGrid;
