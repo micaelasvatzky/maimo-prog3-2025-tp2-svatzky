@@ -28,20 +28,30 @@ const MovieContainer = ({id}) => {
     };
 
     getData();
-  }, []);
+  }, [id]);
 
   return (
     <div>
-    {loading && <p>Cargando...</p>}
-    {error && <p>Error al cargar los datos.</p>}
-    {data && (
-      <div>
-        <h1>{data.title}</h1>
-        <p>{data.overview}</p>
-        <p>Fecha de estreno: {data.release_date}</p>
+      {!loading && !error && (
+         <div
+      className="min-h-screen bg-cover bg-center text-white p-10"
+      style={{
+        backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`,
+        backgroundColor: "rgba(0,0,0,0.6)",
+        backgroundBlendMode: "overlay",
+      }}
+    >
+      <div className="max-w-90 bg-white/20 p-6 mt-20 rounded-xl shadow-lg backdrop-blur text-black">
+        <h1 className="text-4xl font-bold mb-4">{data.title}</h1>
+        <p className="italic text-sm mb-2">Lanzamiento: {data.release_date}</p>
+        <p className="text-lg">{data.overview}</p>
       </div>
-    )}
-  </div>
+    </div>
+      )}
+
+      {loading && <Loading />}
+      {error && <p>HUBO UN ERROR</p>}
+    </div>
   )
 }
 

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -6,8 +7,7 @@ const Navbar = () => {
       <Image src="/assets/Logo.png" width={175} height={175} alt="Logo popcorn.js"/>
       <nav>
         <ul className="flex row justify-between items-center gap-5">
-          <li>Home</li>
-          <li>Movies</li>
+          <li><Link href="/">Home</Link></li>
           <li>Genres</li>
         </ul>
       </nav>
