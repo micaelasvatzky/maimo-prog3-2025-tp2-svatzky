@@ -29,7 +29,7 @@ const MoviesGrid = () => {
   }, []);
 
   return (
-   <div className="grid grid-cols-7 grid-rows-3 gap-12">
+   <div className="grid grid-cols-7 grid-rows-3 gap-12 bg-white/20 p-6 mt-20 rounded-xl shadow-lg backdrop-blur">
       {!loading &&
         data.map(({ id, title, poster_path }) => (
           <MovieCard key={id} id={id} title={title} image = {poster_path}/>
