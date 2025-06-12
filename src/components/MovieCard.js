@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const MovieCard = ({ id, title, image }) => {
+const MovieCard = ({ id, title, image, onMouseOver }) => {
   return (
-    <div className="w-40 flex flex-col items-center text-center rounded-xl bg-amber-50">
+    <div onMouseOver={onMouseOver} className="cursor-pointer hover:scale-105 transition w-40 flex flex-col items-center text-center rounded-xl bg-amber-50">
       <Link href={`/movie/${id}`}>
         <Image
           className="rounded-xl"
