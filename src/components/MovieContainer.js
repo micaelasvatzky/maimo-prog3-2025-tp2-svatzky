@@ -66,7 +66,7 @@ const MovieContainer = ({ id }) => {
                 </p>
                 <p className="text-lg">{data.overview}</p>
               </div>
-              <div className="absolute bottom-4 right-4 w-24 h-24 animate-bounce">
+              <div className="absolute bottom-4 right-4 w-18 h-18 animate-bounce">
                 <Link
                   href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
                   target="_blank"
