@@ -46,7 +46,7 @@ const MovieContainer = ({ id }) => {
         >
           <Navbar />
           <div className="w-full flex justify-center">
-            <div className=" relative flex justify-start w-200 max-h-100 p-6 bg-white/40 mt-20 rounded-xl shadow-lg backdrop-blur text-black">
+            <div className="relative flex justify-start w-220 max-h-100 p-6 bg-white/40 mt-40 rounded-xl shadow-lg backdrop-blur text-black">
               <Image
                 src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                 alt={data.title}
@@ -66,7 +66,9 @@ const MovieContainer = ({ id }) => {
                 </p>
                 <p className="text-lg">{data.overview}</p>
               </div>
-              <div className="absolute bottom-4 right-4 w-18 h-18 animate-bounce">
+            </div>
+          </div>
+          <div className="absolute bottom-4 right-4 w-15 h-15 animate-bounce">
                 <Link
                   href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
                   target="_blank"
@@ -80,8 +82,6 @@ const MovieContainer = ({ id }) => {
                   />
                 </Link>
               </div>
-            </div>
-          </div>
         </div>
       )}
 
