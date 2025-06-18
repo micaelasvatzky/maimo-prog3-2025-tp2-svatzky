@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
-import MoviesGrid from "./MoviesGrid";
+import MoviesGrid from "@/components/MoviesGrid";
 
 const HeroSection = ({ movies }) => {
   const [featuredMovie, setFeaturedMovie] = useState(movies[0]);
@@ -25,7 +25,7 @@ const HeroSection = ({ movies }) => {
         className={`h-full bg-cover bg-no-repeat bg-start w-full`}
       >
         <Navbar />
-        <div className="content h-[450px] flex flex-col justify-center items-start px-[50px]">
+        <div className="content h-[500px] flex flex-col justify-center items-start px-[50px]">
           <h2 className="text-white text-3xl pb-2">{featuredMovie.title}</h2>
           <p className=" text-white max-w-[500px]">{featuredMovie.overview}</p>
         </div>

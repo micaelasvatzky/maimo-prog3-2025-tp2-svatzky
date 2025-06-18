@@ -6,8 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Loading from "@/components/Loading";
 import Navbar from "./Navbar";
+import { favorites, useAppContext } from "@/app/contexts/AppContext.js";
 
 const MovieContainer = ({ id }) => {
+  const { isFavorite, handleChangeFavorite } = useAppContext();
   const IMAGE_BASE = "https://image.tmdb.org/t/p/original/";
   const [data, setData] = useState([]);
   const [error, setError] = useState(false);
@@ -33,11 +35,13 @@ const MovieContainer = ({ id }) => {
     getData();
   }, [id]);
 
+  const favedMovie = isFavorite(data.id);
+
   return (
     <div>
       {!loading && !error && (
         <div
-          className="h-screen bg-cover bg-center text-white"
+          className="h-146.5 bg-cover bg-center text-white"
           style={{
             backgroundImage: `url(${IMAGE_BASE}/${data.backdrop_path})`,
             backgroundColor: "rgba(0,0,0,0.5)",
@@ -46,7 +50,7 @@ const MovieContainer = ({ id }) => {
         >
           <Navbar />
           <div className="w-full flex justify-center">
-            <div className="relative flex justify-start w-220 max-h-100 p-6 bg-white/40 mt-40 rounded-xl shadow-lg backdrop-blur text-black">
+            <div className="relative flex justify-start w-220 h-100 p-6 bg-white/40 mt-30 rounded-xl shadow-lg backdrop-blur text-black">
               <Image
                 src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                 alt={data.title}
@@ -65,23 +69,44 @@ const MovieContainer = ({ id }) => {
                   Release date: {data.release_date}
                 </p>
                 <p className="text-lg">{data.overview}</p>
+                <button
+                  onClick={() => {
+                    handleChangeFavorite(data.title, data.poster_path, data.id);
+                  }}
+                >
+                  {favedMovie ? (
+                   <Image
+                      src="/assets/star.png"
+                      alt="No favorito"
+                      width={32}
+                      height={32}
+                    />
+                  ) : (
+                    <Image
+                      src="/assets/starEmpty.png"
+                      alt="No favorito"
+                      width={32}
+                      height={32}
+                    />
+                  )}
+                </button>
               </div>
             </div>
           </div>
-          <div className="absolute bottom-4 right-4 w-15 h-15 animate-bounce">
-                <Link
-                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
-                  target="_blank"
-                >
-                  <Image
-                    src="/assets/Clapper.gif"
-                    alt="Claqueta"
-                    width={100}
-                    height={100}
-                    unoptimized
-                  />
-                </Link>
-              </div>
+          <div className="absolute bottom-14 right-5 w-15 h-15 animate-bounce">
+            <Link
+              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+              target="_blank"
+            >
+              <Image
+                src="/assets/Clapper.gif"
+                alt="Claqueta"
+                width={100}
+                height={100}
+                unoptimized
+              />
+            </Link>
+          </div>
         </div>
       )}
 

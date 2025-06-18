@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const MovieCard = ({ id, title, image, onMouseOver }) => {
   return (
-    <div onMouseOver={onMouseOver} className="cursor-pointer hover:scale-105 transition w-40 flex flex-col items-center text-center rounded-xl bg-amber-50">
+    <div onMouseOver={onMouseOver} className="cursor-pointer hover:scale-105 transition w-40 flex flex-col items-center text-center rounded-xl">
       <Link href={`/movie/${id}`}>
         <Image
           className="rounded-xl"
