@@ -43,7 +43,7 @@ const GenresContainer = () => {
     };
 
     getGenres();
-  }, []);
+  }, [GENRE_URL]);
 
   return (
     <div className=" text-white">

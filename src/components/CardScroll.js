@@ -4,7 +4,7 @@ const CardScroll = ({movies}) => {
   return (
       <div
         className="
-          flex gap-4 overflow-x-auto overflow-y-hidden p-5 mt-3 mb-5 scroll-smooth
+          flex gap-4 overflow-x-auto overflow-y-hidden p-5 mt-3 mb-3 scroll-smooth
           bg-white/25 rounded-xl shadow-lg backdrop-blur 
         
         "
