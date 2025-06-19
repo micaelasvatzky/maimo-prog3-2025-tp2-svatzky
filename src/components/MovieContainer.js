@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Loading from "@/components/Loading";
 import Navbar from "./Navbar";
-import { favorites, useAppContext } from "@/app/contexts/AppContext.js";
+import { useAppContext } from "@/app/contexts/AppContext.js";
 
 const MovieContainer = ({ id }) => {
   const { isFavorite, handleChangeFavorite } = useAppContext();
@@ -61,25 +61,19 @@ const MovieContainer = ({ id }) => {
               <div className="ml-5 max-w-xl">
                 <div className="flex items-center justify-between mb-2">
                   <h1 className="text-4xl font-bold">{data.title}</h1>
-                  <p className="text-yellow-100 font-semibold text-lg ml-4">
-                    ⭐ {data.vote_average.toFixed(1)} / 10
-                  </p>
-                </div>
-                <p className="italic text-sm mb-2 font-bold">
-                  Release date: {data.release_date}
-                </p>
-                <p className="text-lg">{data.overview}</p>
-                <button
+                  <button
                   onClick={() => {
                     handleChangeFavorite(data.title, data.poster_path, data.id);
                   }}
+                  className="transition duration-200 ease-in-out"
                 >
                   {favedMovie ? (
                    <Image
                       src="/assets/star.png"
-                      alt="No favorito"
+                      alt="Favorito"
                       width={32}
                       height={32}
+                      className="hover:scale-110"
                     />
                   ) : (
                     <Image
@@ -87,9 +81,20 @@ const MovieContainer = ({ id }) => {
                       alt="No favorito"
                       width={32}
                       height={32}
+                      className="hover:scale-110"
                     />
                   )}
                 </button>
+                </div>
+                <div className="flex items-center gap-4 mb-2">
+                <p className="italic text-md font-bold">
+                  Release date: {data.release_date}
+                </p>
+                  <p className="text-yellow-200 font-semibold text-md">
+                ⭐ {data.vote_average.toFixed(1)} / 10
+                  </p>
+                  </div>
+                <p className="text-lg">{data.overview}</p>
               </div>
             </div>
           </div>
@@ -117,3 +122,5 @@ const MovieContainer = ({ id }) => {
 };
 
 export default MovieContainer;
+
+ 

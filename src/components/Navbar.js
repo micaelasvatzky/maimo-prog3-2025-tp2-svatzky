@@ -11,7 +11,7 @@ const Navbar = () => {
       <nav>
         <ul className="flex row justify-between items-center gap-5 text-white font-bold">
           <li><Link href="/">Home</Link></li>
-          <li>Genres</li>
+          <li><Link href="/genres">Genres</Link></li>
           <li><Link href="/favorites">Favorites</Link></li>
         </ul>
       </nav>

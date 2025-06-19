@@ -9,7 +9,7 @@ export const Favorite = () => {
     <div style={{
         backgroundImage: "url('/assets/cine.jpg')",
       }}
-      className="min-h-screen bg-cover bg-center bg-no-repeat pt-15 flex items-center justify-center"
+      className="min-h-screen bg-cover bg-center bg-no-repeat pt-15 flex items-center justify-center "
       >
     <Navbar />
     <FavoritesContainer />

@@ -2,7 +2,6 @@
 
 import HeroSection from "./HeroSection";
 import Loading from "./Loading";
-import MoviesGrid from "./MoviesGrid";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
