@@ -41,7 +41,7 @@ const MovieContainer = ({ id }) => {
     <div>
       {!loading && !error && (
         <div
-          className="h-146.5 bg-cover bg-center text-white"
+          className="min-h-screen lg:h-140 md:h-120 bg-cover bg-center text-white"
           style={{
             backgroundImage: `url(${IMAGE_BASE}/${data.backdrop_path})`,
             backgroundColor: "rgba(0,0,0,0.5)",
@@ -50,15 +50,15 @@ const MovieContainer = ({ id }) => {
         >
           <Navbar />
           <div className="w-full flex justify-center">
-            <div className="relative flex justify-start w-220 h-100 p-6 bg-white/40 mt-30 rounded-xl shadow-lg backdrop-blur text-black">
+            <div className="relative flex flex-col md:flex-row w-85 mb-10 md:mb-0 justify-center items-center md:items-start md:justify-start lg:w-220 md:w-200 lg:h-100 md:h-80 p-6 bg-white/40 mt-30 rounded-xl shadow-lg backdrop-blur text-black">
               <Image
                 src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                 alt={data.title}
-                className="w-60 rounded-lg shadow-md"
+                className="w-80 md:w-45 lg:w-60 rounded-lg shadow-md"
                 width={200}
                 height={200}
               />
-              <div className="ml-5 max-w-xl">
+              <div className="md:ml-5 w-70 md:w-150  mt-5 md:mt-0 md:max-w-xl">
                 <div className="flex items-center justify-between mb-2">
                   <h1 className="text-4xl font-bold">{data.title}</h1>
                   <button
@@ -86,19 +86,19 @@ const MovieContainer = ({ id }) => {
                   )}
                 </button>
                 </div>
-                <div className="flex items-center gap-4 mb-2">
-                <p className="italic text-md font-bold">
+                <div className="flex flex-col items-start md:items-center gap-4 mb-2 md:flex-row">
+                <p className="italic text-lg md:text-md font-bold">
                   Release date: {data.release_date}
                 </p>
-                  <p className="text-yellow-200 font-semibold text-md">
+                  <p className="text-yellow-200 font-semibold text-lg md:text-md">
                 ⭐ {data.vote_average.toFixed(1)} / 10
                   </p>
                   </div>
-                <p className="text-lg">{data.overview}</p>
+                <p className="text-2xl md:text-lg">{data.overview}</p>
               </div>
             </div>
           </div>
-          <div className="absolute bottom-14 right-5 w-15 h-15 animate-bounce">
+          <div className="absolute hidden lg:block lg:bottom-4 lg:right-4 w-15 h-15 md:hidden animate-bounce">
             <Link
               href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
               target="_blank"

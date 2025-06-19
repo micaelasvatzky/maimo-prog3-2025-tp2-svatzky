@@ -46,7 +46,7 @@ const GenresContainer = () => {
   }, [GENRE_URL]);
 
   return (
-    <div className=" text-white">
+    <div className=" text-white pt-10 md:pt-0">
       {loading && <Loading />}
       {error && <p>Hubo un error al cargar los géneros.</p>}
 

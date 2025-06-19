@@ -8,14 +8,15 @@ const MoviesGrid = ({ movies, handleMovieHover, handleMouseLeave }) => {
     >
       <div
         className="grid
+        grid-cols-2
       md:grid-cols-5
-      xl:grid-cols-7
+      lg:grid-cols-7
       gap-4
       md:gap-6
-      xl:gap-12
+      lg:gap-12
       p-4
       md:pr-8
-      xl:pr-12"
+      lg:pr-12"
       >
         {movies.map((movie) => (
           <MovieCard

@@ -7,7 +7,7 @@ const MovieCard = ({ id, title, image, onMouseOver }) => {
    const favedMovie = isFavorite(id);
 
   return (
-    <div onMouseOver={onMouseOver} className="relative min-w-40 flex-shrink-0flex flex-col items-center text-center rounded-xl">
+    <div onMouseOver={onMouseOver} className="relative min-w-40 flex-shrink-0 flex flex-col items-center text-center rounded-xl">
       <Link href={`/movie/${id}`}>
         <Image
           className="cursor-pointer hover:scale-105 transition block rounded-xl overflow-hidden"
