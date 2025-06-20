@@ -43,6 +43,10 @@ export const AppContextProvider = ({ children }) => {
   return favorites.some((movie) => movie.id === id);
 };
 
+const favoritesQty = () =>{
+  return favorites.length;
+}
+
   return (
     <AppContext.Provider
       value={{
@@ -50,7 +54,8 @@ export const AppContextProvider = ({ children }) => {
         handleAddToFavorite,
         handleRemoveFavorite,
         handleChangeFavorite,
-        isFavorite
+        isFavorite,
+        favoritesQty
       }}
       //exporto todo lo que quiera que este disponible para el resto de componentes
     >

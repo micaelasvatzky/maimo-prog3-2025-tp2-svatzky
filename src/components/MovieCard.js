@@ -1,13 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useAppContext } from "@/app/contexts/AppContext.js";
+import StarButton from "./StarButton";
 
 const MovieCard = ({ id, title, image, onMouseOver }) => {
   const { isFavorite, handleChangeFavorite } = useAppContext();
-   const favedMovie = isFavorite(id);
+  const favedMovie = isFavorite(id);
 
   return (
-    <div onMouseOver={onMouseOver} className="relative min-w-40 flex-shrink-0 flex flex-col items-center text-center rounded-xl">
+    <div
+      onMouseOver={onMouseOver}
+      className="relative min-w-40 flex-shrink-0 flex flex-col items-center text-center rounded-xl"
+    >
       <Link href={`/movie/${id}`}>
         <Image
           className="cursor-pointer hover:scale-105 transition block rounded-xl overflow-hidden"
@@ -18,16 +22,9 @@ const MovieCard = ({ id, title, image, onMouseOver }) => {
         />
       </Link>
 
-      <button
-        onClick={() => handleChangeFavorite(title, image, id)}
-        className="absolute top-2 right-2 bg-white backdrop-blur p-1 rounded-full"
-      >
-        {favedMovie ? (
-          <Image src="/assets/star.png" alt="Favorito" width={24} height={24} />
-        ) : (
-          <Image src="/assets/starEmpty.png" alt="No favorito" width={24} height={24} />
-        )}
-      </button>
+      <div className="absolute top-2 right-2 bg-white backdrop-blur px-1.5 py-1.5 rounded-full flex items-center justify-center w-8.5 h-8.5">
+        <StarButton id={id} title={title} image={image}/>
+      </div>
     </div>
   );
 };

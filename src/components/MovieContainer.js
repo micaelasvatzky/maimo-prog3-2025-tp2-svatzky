@@ -7,6 +7,7 @@ import Link from "next/link";
 import Loading from "@/components/Loading";
 import Navbar from "./Navbar";
 import { useAppContext } from "@/app/contexts/AppContext.js";
+import StarButton from "./StarButton";
 
 const MovieContainer = ({ id }) => {
   const { isFavorite, handleChangeFavorite } = useAppContext();
@@ -50,7 +51,7 @@ const MovieContainer = ({ id }) => {
         >
           <Navbar />
           <div className="w-full flex justify-center">
-            <div className="relative flex flex-col md:flex-row w-85 mb-10 md:mb-0 justify-center items-center md:items-start md:justify-start lg:w-220 md:w-200 lg:h-100 md:h-80 p-6 bg-white/40 mt-30 rounded-xl shadow-lg backdrop-blur text-black">
+            <div className="relative flex flex-col md:flex-row w-85 mb-10 md:mb-0 justify-center items-center md:items-start md:justify-start lg:w-220 md:w-200 lg:h-100 md:h-80 p-6 bg-white/40 lg:mt-40 mt-30 rounded-xl shadow-lg backdrop-blur text-black">
               <Image
                 src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                 alt={data.title}
@@ -59,41 +60,24 @@ const MovieContainer = ({ id }) => {
                 height={200}
               />
               <div className="md:ml-5 w-70 md:w-150  mt-5 md:mt-0 md:max-w-xl">
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex justify-between items-center mb-2">
                   <h1 className="text-4xl font-bold">{data.title}</h1>
-                  <button
-                  onClick={() => {
-                    handleChangeFavorite(data.title, data.poster_path, data.id);
-                  }}
-                  className="transition duration-200 ease-in-out"
-                >
-                  {favedMovie ? (
-                   <Image
-                      src="/assets/star.png"
-                      alt="Favorito"
-                      width={32}
-                      height={32}
-                      className="hover:scale-110"
-                    />
-                  ) : (
-                    <Image
-                      src="/assets/starEmpty.png"
-                      alt="No favorito"
-                      width={32}
-                      height={32}
-                      className="hover:scale-110"
-                    />
-                  )}
-                </button>
+                  <div>
+                  <StarButton
+                    title={data.title}
+                    image={data.poster_path}
+                    id={data.id}
+                  />
+                  </div>
                 </div>
                 <div className="flex flex-col items-start md:items-center gap-4 mb-2 md:flex-row">
-                <p className="italic text-lg md:text-md font-bold">
-                  Release date: {data.release_date}
-                </p>
-                  <p className="text-yellow-200 font-semibold text-lg md:text-md">
-                ⭐ {data.vote_average.toFixed(1)} / 10
+                  <p className="italic text-lg md:text-md font-bold">
+                    Release date: {data.release_date}
                   </p>
-                  </div>
+                  <p className="text-yellow-200 font-semibold text-lg md:text-md">
+                    ⭐ {data.vote_average.toFixed(1)} / 10
+                  </p>
+                </div>
                 <p className="text-2xl md:text-lg">{data.overview}</p>
               </div>
             </div>
@@ -122,5 +106,3 @@ const MovieContainer = ({ id }) => {
 };
 
 export default MovieContainer;
-
- 
